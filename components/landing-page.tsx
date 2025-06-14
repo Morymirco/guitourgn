@@ -1,31 +1,31 @@
 "use client"
 
-import { useState } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { getThemeColors } from "@/components/app-colors"
+import { useTheme } from "@/components/theme/theme-provider"
+import ThemeToggle from "@/components/theme/theme-toggle"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { motion, useScroll, useTransform } from "framer-motion"
 import {
-  MapPin,
-  Users,
-  Star,
-  Download,
-  Menu,
-  X,
-  Shield,
-  Compass,
-  Camera,
-  Heart,
-  Globe,
-  Smartphone,
-  Navigation,
   Award,
-  TrendingUp,
+  Camera,
   Clock,
+  Compass,
+  Download,
+  Globe,
+  Heart,
+  MapPin,
+  Menu,
+  Navigation,
+  Shield,
+  Smartphone,
+  Star,
+  TrendingUp,
+  Users,
+  X,
 } from "lucide-react"
-import { useTheme } from "@/components/theme/theme-provider"
-import { getThemeColors } from "@/components/app-colors"
-import ThemeToggle from "@/components/theme/theme-toggle"
+import { useState } from "react"
 
 interface LandingPageProps {
   onLoginClick: () => void
@@ -87,6 +87,14 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
     },
   ]
 
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/app.apk'; 
+    link.download = 'guitour.apk'; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <div className="min-h-screen transition-colors duration-300" style={{ backgroundColor: colors.background }}>
       {/* Header */}
@@ -223,7 +231,9 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <Button size="lg" className="px-8 py-3 text-lg" style={{ backgroundColor: colors.primary }}>
+              <Button size="lg" className="px-8 py-3 text-lg" style={{ backgroundColor: colors.primary }}
+              onClick={handleDownload}
+              >
                 <Download className="mr-2 h-5 w-5" />
                 Télécharger l'App
               </Button>
