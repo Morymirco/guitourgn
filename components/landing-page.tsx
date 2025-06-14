@@ -90,7 +90,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = '/app.apk'; 
-    link.download = 'guitour.apk'; 
+    link.download = 'guitour_app.apk'; 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -231,16 +231,16 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <Button size="lg" className="px-8 py-3 text-lg" style={{ backgroundColor: colors.primary }}
-              onClick={handleDownload}
-              >
-                <Download className="mr-2 h-5 w-5" />
-                Télécharger l'App
-              </Button>
-              <Button size="lg" variant="outline" className="px-8 py-3 text-lg">
-                <Navigation className="mr-2 h-5 w-5" />
-                Explorer Maintenant
-              </Button>
+              <a href="notes.apk" download>
+        <Button size="lg" className="px-8 py-3 text-lg" style={{ backgroundColor: colors.primary }}>
+          <Download className="mr-2 h-5 w-5" />
+          Télécharger l'App
+        </Button>
+      </a>
+      <Button size="lg" variant="outline" className="px-8 py-3 text-lg">
+        <Navigation className="mr-2 h-5 w-5" />
+        Explorer Maintenant
+      </Button>
             </motion.div>
 
             {/* Stats */}
